@@ -19,14 +19,6 @@
           .errorlist {list-style-type: none; color:red;}
         </style>
 
-        <script type="text/javascript">
-          $(document).ready(function(){
-            setTimeout(function(){
-                $("#sta")
-            }, 3000)
-          });
-        </script>
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -79,7 +71,16 @@
 			});
 
 			// use next code for getting captcha object
-			var capthca = el.data( 'captcha' );
+			var capthca = el.data('captcha');
+
+            {% if captcha_check.is_valid %}
+            setTimeout(function(){
+              if ($("#status-message").is(":visible")) {
+                $("#status-message").hide('slow');    
+              }
+            }, 1500)
+            {% endif %}
+
 		});
 
 </script>

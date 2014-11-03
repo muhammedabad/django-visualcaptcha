@@ -20,6 +20,9 @@ def home(request):
                 # Continue with normal form processing logic
                 pass
 
+                # Reset form
+                form = DemoForm()
+
     template_vars['captcha_check'] = captcha_check
     template_vars['form'] = form
 

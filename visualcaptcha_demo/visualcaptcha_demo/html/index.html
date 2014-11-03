@@ -79,7 +79,16 @@
               if ($("#status-message").is(":visible")) {
                 $("#status-message").hide('slow');    
               }
-            }, 1500)
+            }, 3000);
+            {% endif %}
+
+            $(".icon-no").click(function(){
+                $(this).css("cursor", "pointer");
+                $(this).parent().hide('slow');
+            });
+
+            {% if captcha_check.is_valid %}
+              alert("Captcha challenge was successful !");
             {% endif %}
 
 		});

@@ -1,5 +1,5 @@
 """
-Django settings for visualcaptcha_demo project.
+Django settings for cre8ive_marketing project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -12,30 +12,19 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r*qj%y1$fgj@#eo*tas(%c-#kf3-^l&qz4ix&70q@7evl%46pt'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
-
+TEMPLATE_DEBUG = DEBUG
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,36 +36,40 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'visualcaptcha_demo.urls'
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+)
 
+
+ROOT_URLCONF = 'visualcaptcha_demo.urls'
 WSGI_APPLICATION = 'visualcaptcha_demo.wsgi.application'
 
+TEMPLATE_DIRS = (
+    '%s/visualcaptcha_demo/html' % BASE_DIR,
+)
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+FORCE_SCRIPT_NAME = ""
+MEDIA_ROOT = "%s/visualcaptcha_demo/assets" % BASE_DIR
 
+SECRET_KEY = 'o4m$vrp4@ye8gbt3_lxhsn*b95$7xem3^y5i)8_1hl)-a0r=r5'
+
+# Database details
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'visualcaptcha_demo.db',
     }
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Africa/Johannesburg'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
